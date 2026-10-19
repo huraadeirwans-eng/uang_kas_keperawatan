@@ -1,0 +1,111 @@
+{
+  "entities": {
+    "income": {
+      "title": "Income",
+      "description": "Records of income / kas masuk",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "code": { "type": "string" },
+        "date": { "type": "string" },
+        "period": { "type": "string" },
+        "year": { "type": "string" },
+        "category": { "type": "string" },
+        "acceptanceSource": { "type": "string" },
+        "source": { "type": "string" },
+        "participantId": { "type": "string" },
+        "position": { "type": "string" },
+        "workUnit": { "type": "string" },
+        "amount": { "type": "number" },
+        "paymentMethod": { "type": "string" },
+        "status": { "type": "string" },
+        "notes": { "type": "string" },
+        "receiptNumber": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["code", "date", "source", "amount", "paymentMethod", "status"]
+    },
+    "expense": {
+      "title": "Expense",
+      "description": "Records of expense / kas keluar",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "code": { "type": "string" },
+        "date": { "type": "string" },
+        "category": { "type": "string" },
+        "recipient": { "type": "string" },
+        "description": { "type": "string" },
+        "amount": { "type": "number" },
+        "paymentMethod": { "type": "string" },
+        "status": { "type": "string" },
+        "receiptImage": { "type": "string" },
+        "receiptNote": { "type": "string" },
+        "approvedBy": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["code", "date", "category", "recipient", "description", "amount", "paymentMethod", "status"]
+    },
+    "participant": {
+      "title": "Participant",
+      "description": "Member / Peserta data",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "position": { "type": "string" },
+        "workUnit": { "type": "string" },
+        "phone": { "type": "string" },
+        "groupOrDepartment": { "type": "string" },
+        "targetAmount": { "type": "number" },
+        "totalPaid": { "type": "number" },
+        "notes": { "type": "string" },
+        "joinedDate": { "type": "string" }
+      },
+      "required": ["name", "position", "workUnit", "targetAmount", "totalPaid"]
+    },
+    "appSettings": {
+      "title": "AppSettings",
+      "description": "Organization and application settings",
+      "type": "object",
+      "properties": {
+        "orgName": { "type": "string" },
+        "subTitle": { "type": "string" },
+        "address": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "currency": { "type": "string" },
+        "leaderName": { "type": "string" },
+        "leaderTitle": { "type": "string" },
+        "treasurerName": { "type": "string" },
+        "treasurerTitle": { "type": "string" },
+        "landscapeLogoUrl": { "type": "string" },
+        "logoHeight": { "type": "number" },
+        "logoAlignment": { "type": "string" },
+        "showLogoInAppHeader": { "type": "boolean" },
+        "showLogoInPrint": { "type": "boolean" },
+        "showLogoInReceipts": { "type": "boolean" },
+        "defaultDuesAmount": { "type": "number" }
+      },
+      "required": ["orgName"]
+    }
+  },
+  "firestore": {
+    "/incomes/{incomeId}": {
+      "schema": "income",
+      "description": "Collection of all income / kas masuk documents"
+    },
+    "/expenses/{expenseId}": {
+      "schema": "expense",
+      "description": "Collection of all expense / kas keluar documents"
+    },
+    "/participants/{participantId}": {
+      "schema": "participant",
+      "description": "Collection of all participant documents"
+    },
+    "/settings/{settingId}": {
+      "schema": "appSettings",
+      "description": "Application settings and configuration document"
+    }
+  }
+}
